@@ -1,0 +1,20 @@
+{
+  "name": "@example/minimal",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/node": "^3.0.0",
+    "@astrojs/svelte": "^1.0.2",
+    "astro": "^1.6.0",
+    "mongodb": "^4.11.0",
+    "svelte": "^3.52.0"
+  }
+}

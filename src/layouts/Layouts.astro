@@ -1,0 +1,95 @@
+---
+export interface Props {
+	title: string;
+	currentpage: string;
+}
+const { title, currentpage  } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<meta name="description" content="" />
+
+		<!-- <link rel="icon" type="image/svg+xml" href="/fav.png" /> -->
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 124, 58, 237;
+		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
+	}
+	html {
+		font-family: 'Sora', sans-serif;
+		background-color: #ffffff;
+	}
+	code {
+		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+			Bitstream Vera Sans Mono, Courier New, monospace;
+	}
+	body{
+		color: #333;
+		margin: 0;
+	}
+	.container{
+		padding: 0 15px;
+		margin: 0 auto;
+		width: 100%;
+	}
+	p{
+		line-height: 1.5em;;
+	}
+	p, li{
+		color: rgb(121, 121, 121);
+		font-size: 14px;
+	}
+	ul{
+		margin: 0;
+	}
+	/* responsive */
+	/* container */
+	@media only screen and (min-width: 1200px) {
+		.container{
+			width: 1320px
+		}
+	}
+	@media only screen and (max-width: 1200px) {
+		.container{
+			width: 1140px
+		}
+	}
+	@media only screen and (max-width: 992px) {
+		.container{
+			width: 960px
+		}
+	}
+	@media only screen and (max-width: 768px) {
+		.container{
+			width: 720px
+		}
+	}
+	@media only screen and (max-width: 576px) {
+		.container{
+			width: 540px
+		}
+	}
+	@media only screen and (max-width: 576px) {
+		.container{
+			width: 100%
+		}
+	}
+</style>

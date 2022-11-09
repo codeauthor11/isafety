@@ -1,0 +1,56 @@
+---
+import { getAllSpots } from "../../lib/spots";
+import Layout from "../../layouts/Layouts.astro";
+const spots = await getAllSpots();
+if (!spots) {
+  return new Response(null, {
+    status: 404,
+    statusText: "Not found",
+  });
+}
+---
+
+<Layout title="" currentpage="">
+  <canvas id="myCanvas" width="750" height="500" style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML canvas tag.</canvas>
+</Layout>
+
+<script define:vars={{ spots }}>
+  // init canvas
+  const canvas = document.getElementById('myCanvas');
+
+  // spots data
+  // var data = spots;
+
+  // function for creating objects
+  function createObject(data){
+    for ( var i = 0; i < data.length; i++ ){
+      const context = canvas.getContext('2d');
+      const centerX = data[i].coordinate.x;
+      const centerY = data[i].coordinate.y;
+      const radius = data[i].mass;
+
+      let color = 'green';
+
+      if( radius > 40 )
+        color = 'red'
+        else if(radius > 20)
+          color = 'yellow'
+
+      context.beginPath();
+      context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+      context.fillStyle = color;
+      context.fill();
+    }
+  }
+
+  // calling function
+  createObject(spots);
+</script>
+
+<style>
+  canvas{
+    background: url('https://images.unsplash.com/photo-1497366412874-3415097a27e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80');
+    background-size: contain;
+  }
+</style>
